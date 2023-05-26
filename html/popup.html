@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Environment Switcher</title>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/popup.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/popup.css">
+    </head>
+
+    <body>
+        <div id="dialog">
+            <div id="tools">
+                <a href="#edit" id="edit" title="Edit this page in CP"><img src="/images/cp.png"></a>
+                <a href="#options" id="options" title="Edit this list"><img src="/images/options.png"></a>
+            </div>
+
+            <h1>EnvSwitcher</h1>
+            <select id="projects">
+                <option>select</option>
+            </select>
+
+            <ul id="sites">
+            </ul>
+
+            <div id="debug">
+                <ul>
+                    <li><a href="#bar" id="debug_bar">debug to bar</a></a>
+                    <li><a href="#off" id="debug_off">debug off</a></li>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

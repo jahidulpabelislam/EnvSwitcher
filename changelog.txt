@@ -1,0 +1,6 @@
+Changelog
+
+3.3 Debug bar/off
+3.2 Project filter
+3.1 Project sort
+3.0 Editable project list

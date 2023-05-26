@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Switcher Options</title>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/jquery-ui.js"></script>
+        <script src="/js/options.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/options.css">
+    </head>
+
+    <body>
+        <form>
+            <select id="projects">
+            </select>
+
+            <h1>EnvSwitcher v3.2</h1>
+
+            <ul id="sites">
+            </ul>
+
+            <button id="save" class="disabled">saved</button>
+            <button id="sort">Sort list</button>
+        </form>
+
+        <h1>Import CSV file</h1>
+        <code>"name", "url", "project"</code>
+        <input type="file" id="file" accept=".csv">
+
+        <h1>Export</h1>
+        <button id="export">Export file</button>
+    </body>
+</html>
