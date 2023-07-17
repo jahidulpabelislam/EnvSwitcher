@@ -32,8 +32,12 @@ $(document).ready(function() {
                     for (var s in projects[project]) {
                         var site = projects[project][s];
                         var selected = '';
+                        var url = site.url;
+                        if (url.indexOf('//') > -1) {
+                            url = url.split('//')[1];
+                        }
 
-                        if (site.url.indexOf(domain) > -1) {
+                        if (url.indexOf(domain) == 0) {
                             selected_project = project;
                             selected_site = site;
 
