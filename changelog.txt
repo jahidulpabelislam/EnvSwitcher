@@ -1,5 +1,6 @@
 Changelog
 
+3.4 Add current site
 3.3 Debug bar/off
 3.2 Project filter
 3.1 Project sort

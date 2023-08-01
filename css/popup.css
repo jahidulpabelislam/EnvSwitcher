@@ -127,3 +127,11 @@ ul#sites {
     color: #000;
     font-weight: bold;
 }
+
+button#add {
+    display: none;
+    background-color: #9a6;
+    color: #fff;
+    padding: 10px 10px;
+    margin: 10px auto;
+}

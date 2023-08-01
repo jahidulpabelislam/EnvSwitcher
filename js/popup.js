@@ -1,3 +1,12 @@
+if (!String.prototype.hasOwnProperty('ucFirst')) {
+    Object.defineProperty(String.prototype, 'ucFirst', {
+        value: function() {
+            var s = this.toString();
+            return s[0].toUpperCase() + s.substring(1);
+        }
+    });
+};
+
 $(document).ready(function() {
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
         chrome.storage.sync.get({sites: []}, function(data) {
@@ -19,9 +28,9 @@ $(document).ready(function() {
 
                 var current = tabs[0].url;
 
-                var link = document.createElement("a");
-                link.href = current;
+                var link = new URL(current);
                 var domain = link.hostname;
+                var origin = link.origin;
 
                 var $projects = $('#projects');
                 var $sites  = $('#sites');
@@ -63,6 +72,48 @@ $(document).ready(function() {
 
                 if (selected_project) {
                     $projects.val(selected_project).trigger('change');
+                } else {
+                    var $add = $('#add');
+                    $add.css('display', 'block');
+
+                    $add.on('click', function(e) {
+                        e.preventDefault();
+
+                        var parts = domain.split('-');
+
+                        if (domain.indexOf('www') == 0 || (domain.indexOf('d3r') == -1 && domain.indexOf('local') == -1)) {
+                            parts = domain.split('.');
+                            parts[0] = '-- LIVE --';
+                        }
+
+                        if (domain.indexOf('d3r') == -1 && domain.indexOf('local') == -1) {
+                            parts = domain.split('.');
+                            if (parts[0] == 'www') {
+                                parts.shift();
+                            }
+                            parts.unshift('-- LIVE --');
+
+                        }
+
+                        if (domain.indexOf('local') > -1) {
+                            parts = domain.split('.');
+                            parts[0] = '-- LOCAL --';
+                        }
+
+                        var name = parts[0].ucFirst();
+                        var project = parts[1].ucFirst();
+
+                        var site = {
+                            'name'    : name,
+                            'url'     : origin,
+                            'project' : project,
+                        };
+
+                        data.sites.push(site);
+                        chrome.storage.sync.set({sites: data.sites}, function() {
+                            chrome.runtime.openOptionsPage();
+                        });
+                    });
                 }
 
                 if ($projects.find('option').length <= 2) {

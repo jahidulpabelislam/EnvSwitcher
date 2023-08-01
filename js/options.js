@@ -111,7 +111,7 @@ $(function () {
     });
 
     $sites.sortable({
-        change: function( event, ui ) {
+        change: function(event, ui) {
             $save.trigger('_enable');
         }
     });
@@ -141,22 +141,15 @@ $(function () {
             url = e.originalEvent.clipboardData.getData('text');
         }
 
-        if (url !== '' && url.indexOf('//') == -1) {
-            url = 'https://' + url;
-        }
-
-        url = url.replace(/\/$/, '');
-
-        $input.val(url);
-
         if (url == '') {
+            $input.val('');
             return;
         }
 
-        var link = document.createElement('a');
-        link.href = url;
-        var domain = link.hostname;
-        var parts = domain.split('-');
+        var link = new URL(url);
+        url = link.origin;
+
+        $input.val(url);
 
         if (domain.indexOf('www') == 0 || (domain.indexOf('d3r') == -1 && domain.indexOf('local') == -1)) {
             parts = domain.split('.');
