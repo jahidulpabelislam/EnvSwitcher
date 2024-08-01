@@ -58,7 +58,7 @@ $(function () {
 
     function refreshProjects() {
         var projects = [];
-        var options = ['<option>-- project filter --</option>'];
+        var options = ['<option value="">-- project filter --</option>'];
 
         var $lis = $sites.find('li');
 
@@ -93,7 +93,7 @@ $(function () {
 
         var $lis = $sites.find('li');
         if (!filter) {
-            $trs.show();
+            $lis.show();
             return;
         }
 
