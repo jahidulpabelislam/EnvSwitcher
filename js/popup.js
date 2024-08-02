@@ -86,7 +86,7 @@ $(document).ready(function() {
                 });
 
                 if (selected_project) {
-                    $projects.val(selected_project).trigger('change');
+                    $projects.val(escape(selected_project)).trigger('change');
                 } else {
                     var $add = $('#add');
                     $add.css('display', 'block');
