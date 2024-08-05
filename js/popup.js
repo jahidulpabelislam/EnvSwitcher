@@ -5,7 +5,22 @@ if (!String.prototype.hasOwnProperty('ucFirst')) {
             return s[0].toUpperCase() + s.substring(1);
         }
     });
-};
+}
+
+if (!String.prototype.hasOwnProperty('ucWords')) {
+    Object.defineProperty(String.prototype, 'ucWords', {
+        value: function() {
+            var string = this.toString();
+            const words = string.split(" ");
+
+            for (let i = 0; i < words.length; i++) {
+                words[i] = words[i][0].toUpperCase() + words[i].substring(1);
+            }
+
+            return words.join(" ");
+        }
+    });
+}
 
 $(document).ready(function() {
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
@@ -71,7 +86,7 @@ $(document).ready(function() {
                 });
 
                 if (selected_project) {
-                    $projects.val(selected_project).trigger('change');
+                    $projects.val(escape(selected_project)).trigger('change');
                 } else {
                     var $add = $('#add');
                     $add.css('display', 'block');
@@ -79,34 +94,30 @@ $(document).ready(function() {
                     $add.on('click', function(e) {
                         e.preventDefault();
 
-                        var parts = domain.split('-');
+                        var parts = domain.split('.');
+                        var project = parts[1];
 
-                        if (domain.indexOf('www') == 0 || (domain.indexOf('d3r') == -1 && domain.indexOf('local') == -1)) {
-                            parts = domain.split('.');
+                        if (parts[2] === 'local') {
+                            parts[0] = '-- LOCAL --';
+                        } else if (domain.indexOf('.d3r.') > -1) {
+                            var stagingParts = parts[0].split('-');
+                            parts[0] = stagingParts.shift() + ' - Staging';
+                            stagingParts.pop();
+                            project = stagingParts.join(' ');
+                        } else {
+                            // Assume its live
+                            if (parts[0] === 'www') {
+                                parts.shift();
+                            }
+
+                            project = parts[0];
                             parts[0] = '-- LIVE --';
                         }
 
-                        if (domain.indexOf('d3r') == -1 && domain.indexOf('local') == -1) {
-                            parts = domain.split('.');
-                            if (parts[0] == 'www') {
-                                parts.shift();
-                            }
-                            parts.unshift('-- LIVE --');
-
-                        }
-
-                        if (domain.indexOf('local') > -1) {
-                            parts = domain.split('.');
-                            parts[0] = '-- LOCAL --';
-                        }
-
-                        var name = parts[0].ucFirst();
-                        var project = parts[1].ucFirst();
-
                         var site = {
-                            'name'    : name,
+                            'name'    : parts[0].ucWords(),
                             'url'     : origin,
-                            'project' : project,
+                            'project' : project.ucWords(),
                         };
 
                         data.sites.push(site);
