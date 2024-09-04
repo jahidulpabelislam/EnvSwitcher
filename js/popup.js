@@ -135,17 +135,21 @@ $(document).ready(function() {
                     }
                 }
 
-                var redirect = 'redirect=' + encodeURIComponent(link.pathname);
-
                 $('#debug_bar').on('click', function(e) {
-                    var url = link.protocol + '//' + link.hostname + '/debug/enable?destination=bar&' + redirect;
-                    chrome.tabs.update(tabs[0].id, {url: url});
+                    const debugLink = link;
+                    const linkQueryParams = new URLSearchParams(debugLink.search);
+                    linkQueryParams.set("d3r_debug", "true");
+                    debugLink.search = linkQueryParams.toString();
+                    chrome.tabs.update(tabs[0].id, {url: debugLink.toString()});
                     window.close();
                 });
 
                 $('#debug_off').on('click', function(e) {
-                    var url = link.protocol + '//' + link.hostname + '/debug/disable?' + redirect;
-                    chrome.tabs.update(tabs[0].id, {url: url});
+                    const debugLink = link;
+                    const linkQueryParams = new URLSearchParams(debugLink.search);
+                    linkQueryParams.set("d3r_debug", "false");
+                    debugLink.search = linkQueryParams.toString();
+                    chrome.tabs.update(tabs[0].id, {url: debugLink.toString()});
                     window.close();
                 });
 
