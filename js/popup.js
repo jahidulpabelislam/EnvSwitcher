@@ -153,6 +153,22 @@ $(document).ready(function() {
                     window.close();
                 });
 
+                $('.js-new-cp').on('click', function(e) {
+                    const linkQueryParams = new URLSearchParams(link.search);
+                    linkQueryParams.set("ff_cp-ui", "1");
+                    link.search = linkQueryParams.toString();
+                    chrome.tabs.update(tabs[0].id, {url: link.toString()});
+                    window.close();
+                });
+
+                $('.js-old-cp').on('click', function(e) {
+                    const linkQueryParams = new URLSearchParams(link.search);
+                    linkQueryParams.set("ff_cp-ui", "0");
+                    link.search = linkQueryParams.toString();
+                    chrome.tabs.update(tabs[0].id, {url: link.toString()});
+                    window.close();
+                });
+
                 var $edit = $('#edit');
                 if (link.pathname.indexOf('/cp') > -1) {
                     $edit.hide();
