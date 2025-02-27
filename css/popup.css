@@ -4,12 +4,12 @@
 
 body {
     width: 200px;
-    background: #dadada;
+    background: #fff;
 }
 
 h1 {
     font-size: 16px;
-    color: #9a6;
+    color: #00ABCE;
 }
 
 h2 {
@@ -24,14 +24,12 @@ p {
 
 a {
     white-space: nowrap;
-    color: #555;
+    color: #666;
     outline: none;
     text-decoration: none;
-    text-transform: uppercase;
 }
 a:hover {
-    color: #000;
-    text-decoration: underline;
+    color: #00ABCE;
 }
 
 /** TOOLS **/
@@ -46,7 +44,7 @@ a:hover {
 #tools a {
     padding: 3px;
     display: inline-block;
-    border: 1px solid #999;
+    border: 1px solid #BDBDBD;
     border-radius: 3px;
     margin-left: 3px;
 }
@@ -62,7 +60,7 @@ a:hover {
 
 #debug ul {
     text-align: center;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #BDBDBD;
     margin: 5px 0;
     padding: 5px 0;
     font-size: 14px;
@@ -78,7 +76,7 @@ a:hover {
 }
 
 #debug li:not(:first-child) {
-    border-left: 1px solid #ccc;
+    border-left: 1px solid #BDBDBD;
 }
 
 #debug a {
@@ -87,12 +85,28 @@ a:hover {
     margin: 0 0.25em;
 }
 
+/** PROJECTS **/
+select#projects {
+    width: 100%;
+    padding: 5px;
+    appearance: none;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23BDBDBD' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    padding-right: 2rem;
+}
+
 /** SITES **/
 
 ul#sites {
     margin-left: 0;
-    padding-left: 20px;
+    padding-left: 0;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
 
 #sites li {
@@ -100,27 +114,35 @@ ul#sites {
     padding: 0;
     font-size: 14px;
     display: none;
-}
-#sites li.selected {
-    font-weight: bold;
+
+    a {
+        color: inherit;
+    }
 }
 #sites li.show {
     display: block;
 }
-#sites li:before {
-    content: "";
-    border-color: transparent #9a6;
-    border-style: solid;
-    border-width: 0.35em 0 0.35em 0.45em;
-    display: block;
-    height: 0;
-    width: 0;
-    left: -1em;
-    top: 0.9em;
-    position: relative;
+
+#sites li a {
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 3px;
 }
-#sites li.selected:before {
-    border-color: transparent #000;
+#sites li a:hover {
+    color: #000;
+}
+#sites li a:before {
+    content: 'chevron_right';
+    display: inline-block;
+    font-family: 'Material Symbols Outlined';
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -webkit-font-feature-settings: 'liga';
+    color: inherit;
+}
+#sites li.selected a {
+    color: #00ABCE;
 }
 
 #sites em {
@@ -130,7 +152,7 @@ ul#sites {
 
 button#add {
     display: none;
-    background-color: #9a6;
+    background-color: #00ABCE;
     color: #fff;
     padding: 10px 10px;
     margin: 10px auto;
