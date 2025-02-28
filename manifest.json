@@ -20,6 +20,6 @@
         "https://*/*"
     ],
     "options_page": "html/options.html",
-    "version": "3.4",
+    "version": "3.5",
     "manifest_version": 3
 }
