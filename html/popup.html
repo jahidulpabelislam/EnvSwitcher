@@ -5,14 +5,14 @@
         <script src="/js/jquery.js"></script>
         <script src="/js/popup.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/popup.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=chevron_right" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
 
     <body>
         <div id="dialog">
             <div id="tools">
-                <a href="#edit" id="edit" title="Edit this page in CP"><img src="/images/cp.png"></a>
-                <a href="#options" id="options" title="Edit this list"><img src="/images/options.png"></a>
+                <a href="#edit" id="edit" title="Edit this page in CP" class="symbol">edit</a>
+                <a href="#options" id="options" title="Extension settings" class="symbol">settings</a>
             </div>
 
             <h1>EnvSwitcher</h1>
@@ -26,9 +26,16 @@
             <button id="add">Add site to list</button>
 
             <div id="debug">
+                <p title="Debug bar">
+                    <span class="symbol">bug_report</span>
+                    <span>:</span>
+                </p>
+
                 <ul>
-                    <li><a href="#bar" id="debug_bar">debug to bar</a></li>
-                    <li><a href="#off" id="debug_off">debug off</a></li>
+                    <li><a href="#" title="Debug to bar"     data-debug="true"    class="symbol">toolbar</a></li>
+                    <li><a href="#" title="Debug to file"    data-debug="file"    class="symbol">text_snippet</a></li>
+                    <li><a href="#" title="Debug to console" data-debug="console" class="symbol">summarize</a></li>
+                    <li><a href="#" title="Disable Debug"    data-debug="false"   class="symbol">close</a></li>
                 </ul>
             </div>
         </div>

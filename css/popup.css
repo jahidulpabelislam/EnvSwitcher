@@ -9,7 +9,9 @@ body {
 
 h1 {
     font-size: 16px;
+    line-height: 24px;
     color: #00ABCE;
+    letter-spacing: 0.5px;
 }
 
 h2 {
@@ -32,57 +34,60 @@ a:hover {
     color: #00ABCE;
 }
 
+.symbol {
+    font-family: 'Material Symbols Outlined';
+    color: inherit;
+    font-size: 24px;
+}
+
 /** TOOLS **/
 
 #tools {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 7px;
+    right: 4px;
+    display: flex;
+    gap: 5px;
     text-align: right;
-}
-
-#tools a {
-    padding: 3px;
-    display: inline-block;
-    border: 1px solid #BDBDBD;
-    border-radius: 3px;
-    margin-left: 3px;
-}
-
-#tools a:hover {
-    border: 1px solid black;
+    color: #999;
 }
 
 /** DEBUG **/
 
 #debug {
+    border-top: 1px solid #ddd;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+#debug p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    color: #999;
+
+    .symbol {
+        color: #000;
+    }
 }
 
 #debug ul {
-    text-align: center;
-    border-top: 1px solid #BDBDBD;
-    margin: 5px 0;
-    padding: 5px 0;
-    font-size: 14px;
-}
-
-#debug ul * {
-    display: inline-block;
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
 }
 
 #debug li {
     margin: 0;
-    font-size: 14px;
-}
-
-#debug li:not(:first-child) {
-    border-left: 1px solid #BDBDBD;
-}
-
-#debug a {
-    text-transform: none;
-    padding: 0 0.25em;
-    margin: 0 0.25em;
+    padding: 0;
+    list-style-type: none;
+    color: #999;
 }
 
 /** PROJECTS **/
@@ -114,6 +119,7 @@ ul#sites {
     padding: 0;
     font-size: 14px;
     display: none;
+    letter-spacing: 0.5px;
 
     a {
         color: inherit;
@@ -126,8 +132,8 @@ ul#sites {
 #sites li a {
     color: #666;
     display: flex;
-    align-items: center;
     gap: 3px;
+    align-items: center;
 }
 #sites li a:hover {
     color: #000;
@@ -137,9 +143,15 @@ ul#sites {
     display: inline-block;
     font-family: 'Material Symbols Outlined';
     line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -webkit-font-feature-settings: 'liga';
     color: inherit;
+    vertical-align: middle;
+    font-size: 20px;
+}
+#sites li a.local:before {
+    content: 'construction';
+}
+#sites li a.production:before {
+    content: 'bolt';
 }
 #sites li.selected a {
     color: #00ABCE;

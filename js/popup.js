@@ -68,7 +68,15 @@ $(document).ready(function() {
                             selected = ' class="selected"';
                         }
 
-                        $('<li data-client="' + escape(project) + '"' + selected + '><a href="' + site.url + link.pathname + link.search + '">' + site.name + '</a></li>').appendTo($sites);
+                        let env = 'production';
+                        if (url.indexOf('.d3r.com') > -1) {
+                            env = 'staging';
+                        }
+                        if (url.indexOf('.local') > -1) {
+                            env = 'local';
+                        }
+
+                        $('<li data-client="' + escape(project) + '"' + selected + '><a class="' + env + '" href="' + site.url + link.pathname + link.search + '">' + site.name + '</a></li>').appendTo($sites);
                     }
                 }
 
@@ -135,19 +143,10 @@ $(document).ready(function() {
                     }
                 }
 
-                $('#debug_bar').on('click', function(e) {
+                $('#debug a').on('click', function(e) {
                     const debugLink = link;
                     const linkQueryParams = new URLSearchParams(debugLink.search);
-                    linkQueryParams.set("d3r_debug", "true");
-                    debugLink.search = linkQueryParams.toString();
-                    chrome.tabs.update(tabs[0].id, {url: debugLink.toString()});
-                    window.close();
-                });
-
-                $('#debug_off').on('click', function(e) {
-                    const debugLink = link;
-                    const linkQueryParams = new URLSearchParams(debugLink.search);
-                    linkQueryParams.set("d3r_debug", "false");
+                    linkQueryParams.set('d3r_debug', this.dataset.debug);
                     debugLink.search = linkQueryParams.toString();
                     chrome.tabs.update(tabs[0].id, {url: debugLink.toString()});
                     window.close();
