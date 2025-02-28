@@ -23,6 +23,9 @@ if (!String.prototype.hasOwnProperty('ucWords')) {
 }
 
 $(document).ready(function() {
+    var manifest = chrome.runtime.getManifest();
+    $('<span> v' + manifest.version + '</span>').appendTo($('h1'));
+
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
         chrome.storage.local.get({sites: []}, function(data) {
             if (data.sites.length > 0) {
