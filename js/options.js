@@ -75,7 +75,7 @@ $(function () {
         $projects.html(options.join("\n"));
     }
 
-    chrome.storage.sync.get({sites: []}, function(data) {
+    chrome.storage.local.get({sites: []}, function(data) {
         var lis = [];
         data.sites.forEach(function(site) {
             lis.push(row(site.name, site.url, site.project));
@@ -196,7 +196,7 @@ $(function () {
         e.preventDefault();
         getSites();
 
-        chrome.storage.sync.set({sites: sites}, function() {
+        chrome.storage.local.set({sites: sites}, function() {
             $save.trigger('_disable');
         });
     });
