@@ -10,34 +10,38 @@
 
     <body>
         <div id="dialog">
-            <div id="tools">
-                <a href="#edit" id="edit" title="Edit this page in CP" class="symbol">edit</a>
-                <a href="#options" id="options" title="Extension settings" class="symbol">settings</a>
-            </div>
+            <header>
+                <div id="tools">
+                    <a href="#edit" id="edit" title="Edit this page in CP" class="symbol">edit</a>
+                    <a href="#options" id="options" title="Extension settings" class="symbol">settings</a>
+                </div>
 
-            <h1>Switcher</h1>
-            <select id="projects">
-                <option>select</option>
-            </select>
+                <h1>Switcher</h1>
+                <select id="projects">
+                    <option>select</option>
+                </select>
+            </header>
 
             <ul id="sites">
             </ul>
 
-            <button id="add">Add site to list</button>
+            <footer>
+                <button id="add">Add site to list</button>
 
-            <div id="debug">
-                <p title="Debug bar">
-                    <span class="symbol">bug_report</span>
-                    <span>:</span>
-                </p>
+                <div id="debug">
+                    <p title="Debug bar">
+                        <span class="symbol">bug_report</span>
+                        <span>:</span>
+                    </p>
 
-                <ul>
-                    <li><a href="#" title="Debug to bar"     data-debug="true"    class="symbol">toolbar</a></li>
-                    <li><a href="#" title="Debug to file"    data-debug="file"    class="symbol">text_snippet</a></li>
-                    <li><a href="#" title="Debug to console" data-debug="console" class="symbol">summarize</a></li>
-                    <li><a href="#" title="Disable Debug"    data-debug="false"   class="symbol">close</a></li>
-                </ul>
-            </div>
+                    <ul>
+                        <li><a href="#" title="Debug to bar"     data-debug="true"    class="symbol">toolbar</a></li>
+                        <li><a href="#" title="Debug to file"    data-debug="file"    class="symbol">text_snippet</a></li>
+                        <li><a href="#" title="Debug to console" data-debug="console" class="symbol">summarize</a></li>
+                        <li><a href="#" title="Disable Debug"    data-debug="false"   class="symbol">close</a></li>
+                    </ul>
+                </div>
+            </footer>
         </div>
     </body>
 </html>

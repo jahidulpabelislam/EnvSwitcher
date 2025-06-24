@@ -40,6 +40,13 @@ a:hover {
     font-size: 24px;
 }
 
+#dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    max-height: 500px;
+}
+
 /** TOOLS **/
 
 #tools {
@@ -58,7 +65,6 @@ a:hover {
     border-top: 1px solid #ddd;
     display: flex;
     gap: 10px;
-    margin-top: 10px;
     padding-top: 10px;
 }
 
@@ -111,7 +117,8 @@ ul#sites {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 6px;
+    overflow-y: scroll;
 }
 
 #sites li {
