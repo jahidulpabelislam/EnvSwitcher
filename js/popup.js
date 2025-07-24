@@ -11,13 +11,17 @@ if (!String.prototype.hasOwnProperty('ucWords')) {
     Object.defineProperty(String.prototype, 'ucWords', {
         value: function() {
             var string = this.toString();
-            const words = string.split(" ");
 
-            for (let i = 0; i < words.length; i++) {
-                words[i] = words[i][0].toUpperCase() + words[i].substring(1);
+            if (string) {
+                const words = string.split(" ");
+
+                for (let i = 0; i < words.length; i++) {
+                    words[i] = words[i][0].toUpperCase() + words[i].substring(1);
+                }
+
+                return words.join(" ");
             }
-
-            return words.join(" ");
+            return string;
         }
     });
 }
