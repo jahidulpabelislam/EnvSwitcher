@@ -27,7 +27,7 @@ $(document).ready(function() {
     $('<span> v' + manifest.version + '</span>').appendTo($('h1'));
 
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
-        chrome.storage.local.get({sites: []}, function(data) {
+        chrome.storage.sync.get({sites: []}, function(data) {
             if (data.sites.length > 0) {
                 var projects = [];
                 var selected_project;
@@ -132,7 +132,7 @@ $(document).ready(function() {
                         };
 
                         data.sites.push(site);
-                        chrome.storage.local.set({sites: data.sites}, function() {
+                        chrome.storage.sync.set({sites: data.sites}, function() {
                             chrome.runtime.openOptionsPage();
                         });
                     });
