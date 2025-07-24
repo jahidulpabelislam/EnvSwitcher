@@ -151,22 +151,21 @@ $(function () {
 
         $input.val(url);
 
-        if (domain.indexOf('www') == 0 || (domain.indexOf('d3r') == -1 && domain.indexOf('local') == -1)) {
+        if (url.indexOf('www') == 0 || (url.indexOf('d3r') == -1 && url.indexOf('local') == -1)) {
             parts = domain.split('.');
             parts[0] = '-- LIVE --';
         }
 
-        if (domain.indexOf('d3r') == -1 && domain.indexOf('local') == -1) {
-            parts = domain.split('.');
+        if (url.indexOf('d3r') == -1 && url.indexOf('local') == -1) {
+            parts = url.split('.');
             if (parts[0] == 'www') {
                 parts.shift();
             }
             parts.unshift('-- LIVE --');
-
         }
 
-        if (domain.indexOf('local') > -1) {
-            parts = domain.split('.');
+        if (url.indexOf('local') > -1) {
+            parts = url.split('.');
             parts[0] = '-- LOCAL --';
         }
 
